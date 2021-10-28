@@ -19,12 +19,12 @@ namespace DAL
             {
             connection.Open();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = @"select roomid as MaPhong, TIMESTAMPDIFF(DAY,checkin.checkin, current_timestamp()) as SoNgayO, 
+            command.CommandText = @"select roomid as MaPhong, roomtype.rtname as LoaiPhong, TIMESTAMPDIFF(DAY,checkin.checkin, current_timestamp()) as SoNgayO, 
                                     TIMESTAMPDIFF(DAY,checkin.checkin, current_timestamp()) * roomtype.price as GiaTien 
                                     from room inner join roomtype  
                                     on room.rtname = roomtype.rtname 
                                     inner join checkin
-                                    on roomtype.rtname = checkin.rtname where room.roomstatus = '1' order by roomid;";
+                                    on roomtype.rtname = checkin.rtname where room.roomstatus = '1' group by roomid order by roomid;";
 
             reader = command.ExecuteReader();
             if (reader.Read())

@@ -295,7 +295,7 @@ namespace PL_Console
                         }
                         break;
                     case 0:
-
+                        DisplayMenu(mainMenu);
                         break;
                 }
             } while (choice != 0);
@@ -333,7 +333,6 @@ namespace PL_Console
                 switch(choice)
                 {
                     case 1:
-                        List<Room> listRoom = romBL.GetRooms();
                         int roomId;
                         Console.Write("Enter an Room's ID: ");
                         roomId = Convert.ToInt32(Console.ReadLine());
@@ -344,7 +343,7 @@ namespace PL_Console
                             Console.Clear();
                             Console.WriteLine("+-------------------------------+");
                             Console.WriteLine("|Room Id: " + chkout.roomID + "\t\t\t|");
-                            Console.WriteLine("|Time Stay: " + chkout.TimeStay + "\t\t\t|");
+                            Console.WriteLine("|Time Stay(Day): " + chkout.TimeStay + "\t\t|");
                             Console.WriteLine("|Price: " + chkout.Price + "\t\t|");
                             Console.WriteLine("+-------------------------------+");
                         }
@@ -359,6 +358,9 @@ namespace PL_Console
                     break;
 
                     case 2:
+                    break;
+                    case 0:
+                    DisplayMenu(mainMenu);
                     break;
                 }
 
