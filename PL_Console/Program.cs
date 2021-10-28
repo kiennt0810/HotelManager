@@ -333,7 +333,8 @@ namespace PL_Console
                 switch(choice)
                 {
                     case 1:
-                    int roomId;
+                        List<Room> listRoom = romBL.GetRooms();
+                        int roomId;
                         Console.Write("Enter an Room's ID: ");
                         roomId = Convert.ToInt32(Console.ReadLine());
 

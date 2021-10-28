@@ -24,7 +24,7 @@ namespace DAL
                                     from room inner join roomtype  
                                     on room.rtname = roomtype.rtname 
                                     inner join checkin
-                                    on roomtype.rtname = checkin.rtname;";
+                                    on roomtype.rtname = checkin.rtname where room.roomstatus = '1' order by roomid;";
 
             reader = command.ExecuteReader();
             if (reader.Read())
