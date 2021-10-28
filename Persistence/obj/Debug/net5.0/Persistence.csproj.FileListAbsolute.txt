@@ -1,0 +1,12 @@
+E:\HotelManager\Persistence\bin\Debug\net5.0\Persistence.deps.json
+E:\HotelManager\Persistence\bin\Debug\net5.0\Persistence.dll
+E:\HotelManager\Persistence\bin\Debug\net5.0\ref\Persistence.dll
+E:\HotelManager\Persistence\bin\Debug\net5.0\Persistence.pdb
+E:\HotelManager\Persistence\obj\Debug\net5.0\Persistence.csproj.AssemblyReference.cache
+E:\HotelManager\Persistence\obj\Debug\net5.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+E:\HotelManager\Persistence\obj\Debug\net5.0\Persistence.AssemblyInfoInputs.cache
+E:\HotelManager\Persistence\obj\Debug\net5.0\Persistence.AssemblyInfo.cs
+E:\HotelManager\Persistence\obj\Debug\net5.0\Persistence.csproj.CoreCompileInputs.cache
+E:\HotelManager\Persistence\obj\Debug\net5.0\Persistence.dll
+E:\HotelManager\Persistence\obj\Debug\net5.0\ref\Persistence.dll
+E:\HotelManager\Persistence\obj\Debug\net5.0\Persistence.pdb

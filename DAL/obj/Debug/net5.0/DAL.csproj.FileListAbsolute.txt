@@ -1,0 +1,15 @@
+E:\HotelManager\DAL\obj\Debug\net5.0\DAL.csproj.AssemblyReference.cache
+E:\HotelManager\DAL\obj\Debug\net5.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+E:\HotelManager\DAL\obj\Debug\net5.0\DAL.AssemblyInfoInputs.cache
+E:\HotelManager\DAL\obj\Debug\net5.0\DAL.AssemblyInfo.cs
+E:\HotelManager\DAL\obj\Debug\net5.0\DAL.csproj.CoreCompileInputs.cache
+E:\HotelManager\DAL\bin\Debug\net5.0\DAL.deps.json
+E:\HotelManager\DAL\bin\Debug\net5.0\DAL.dll
+E:\HotelManager\DAL\bin\Debug\net5.0\ref\DAL.dll
+E:\HotelManager\DAL\bin\Debug\net5.0\DAL.pdb
+E:\HotelManager\DAL\bin\Debug\net5.0\Persistence.dll
+E:\HotelManager\DAL\bin\Debug\net5.0\Persistence.pdb
+E:\HotelManager\DAL\obj\Debug\net5.0\DAL.csproj.CopyComplete
+E:\HotelManager\DAL\obj\Debug\net5.0\DAL.dll
+E:\HotelManager\DAL\obj\Debug\net5.0\ref\DAL.dll
+E:\HotelManager\DAL\obj\Debug\net5.0\DAL.pdb
