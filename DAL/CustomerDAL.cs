@@ -64,9 +64,8 @@ namespace DAL
                 connection.Open();
 
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = @"insert into customer(customerid, customername, address, idcard, phonenumber, email, gender) values
-        (@CId,@CName, @CAddress, @CIDCard, @CPhone, @CEmail, @CGender);";
-                command.Parameters.AddWithValue("@CId", cus.CustomerId);
+                command.CommandText = @"insert into customer(customername, address, idcard, phonenumber, email, gender) values
+        (@CName, @CAddress, @CIDCard, @CPhone, @CEmail, @CGender);";
                 command.Parameters.AddWithValue("@CName", cus.Customer_Name);
                 command.Parameters.AddWithValue("@CAddress", cus.Address);
                 command.Parameters.AddWithValue("@CIDCard", cus.Id_Card);

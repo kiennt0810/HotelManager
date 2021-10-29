@@ -21,7 +21,9 @@ namespace PL_Console
             do
             {
                 Console.Clear();
-                Console.WriteLine("LOGIN");
+                Console.WriteLine("+---------------------------------+");
+                Console.WriteLine("|              LOGIN              |");
+                Console.WriteLine("+---------------------------------+");
                 Console.Write("User Name: ");
                 string userName = Console.ReadLine();
                 Console.Write("Password: ");
@@ -46,8 +48,9 @@ namespace PL_Console
                     do
                     {
                         Console.Clear();
-                        Console.WriteLine("-------Wellcome to Hotel-------");
-                        Console.WriteLine("===============================");
+                        Console.WriteLine("+---------------------------------+");
+                        Console.WriteLine("|       Wellcome to Hotel         |");
+                        Console.WriteLine("+---------------------------------+");
                         DisplayMenu(mainMenu);
                         choice = InputChoice();
 
@@ -132,8 +135,9 @@ namespace PL_Console
             do
             {
                 Console.Clear();
-                Console.WriteLine("-------Check In------- ");
-                Console.WriteLine("=======================");
+                Console.WriteLine("+---------------------------------+");
+                Console.WriteLine("|             Check In            |");
+                Console.WriteLine("+---------------------------------+");
                 DisplayMenu(subMenu1);
                 try
                 {
@@ -210,21 +214,14 @@ namespace PL_Console
                             }
                             else
                             {
-                                Console.Write("Cutomer ID: ");
-                                cus1.CustomerId = Convert.ToInt32(Console.ReadLine());
-
                                 Console.Write("Cutomer Name: ");
                                 cus1.Customer_Name = Convert.ToString(Console.ReadLine());
-
                                 Console.Write("Address: ");
                                 cus1.Address = Convert.ToString(Console.ReadLine());
-
                                 Console.Write("Phone Number: ");
                                 cus1.Phone_Number = Convert.ToString(Console.ReadLine());
-
                                 Console.Write("Email: ");
                                 cus1.Email = Convert.ToString(Console.ReadLine());
-
                                 Console.Write("Gender: ");
                                 cus1.Gender = Convert.ToString(Console.ReadLine());
 
@@ -239,8 +236,6 @@ namespace PL_Console
 
                             }
                         }
-
-
                         Console.WriteLine("\n    Press Enter key to back menu...");
                         Console.ReadLine();
                         DisplaysubMenu1();
@@ -253,13 +248,15 @@ namespace PL_Console
                         Customer cus = cusBL.GetCustomerById(cusId);
                         if (cus != null)
                         {
-                            Console.WriteLine("Customer ID: " + cus.CustomerId);
-                            Console.WriteLine("Customer Name: " + cus.Customer_Name);
-                            Console.WriteLine("Address: " + cus.Address);
-                            Console.WriteLine("Id Card: " + cus.Id_Card);
-                            Console.WriteLine("Phone Number: " + cus.Phone_Number);
-                            Console.WriteLine("Email: " + cus.Email);
-                            Console.WriteLine("Gender: " + cus.Gender);
+                            Console.WriteLine("+-------------------------------+");
+                            Console.WriteLine("|Customer ID: " + cus.CustomerId+ "\t\t\t|");
+                            Console.WriteLine("|Customer Name: " + cus.Customer_Name+ "\t|");
+                            Console.WriteLine("|Address: " + cus.Address+ "\t\t|");
+                            Console.WriteLine("|Id Card: " + cus.Id_Card+ "\t\t|");
+                            Console.WriteLine("|Phone Number: " + cus.Phone_Number+ "\t|");
+                            Console.WriteLine("|Email: " + cus.Email+ "\t|");
+                            Console.WriteLine("|Gender: " + cus.Gender+ "\t\t\t|");
+                            Console.WriteLine("+-------------------------------+");
                         }
                         Console.WriteLine("\n    Press Enter key to back menu...");
                         Console.ReadLine();
@@ -315,8 +312,9 @@ namespace PL_Console
             do
             {
                 Console.Clear();
-                Console.WriteLine("-------Check Out------- ");
-                Console.WriteLine("=======================");
+                Console.WriteLine("+---------------------------------+");
+                Console.WriteLine("|           Check Out             |");
+                Console.WriteLine("+---------------------------------+");
                 DisplayMenu(subMenu2);
                 try
                 {
