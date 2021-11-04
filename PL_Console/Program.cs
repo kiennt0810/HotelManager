@@ -21,23 +21,28 @@ namespace PL_Console
             do
             {
                 Console.Clear();
-                Console.WriteLine("+---------------------------------+");
-                Console.WriteLine("|              LOGIN              |");
-                Console.WriteLine("+---------------------------------+");
-                Console.Write("User Name: ");
+                Console.WriteLine("\t+------------------------------------------------+");
+                Console.WriteLine("\t|                                                |");
+                Console.WriteLine("\t|            |     ___    ___   .   __           |");
+                Console.WriteLine("\t|            |    |   |  |___|  |  |  |          |");
+                Console.WriteLine("\t|            |___ |___|   ___|  |  |  |          |");
+                Console.WriteLine("\t|                                                |");
+                Console.WriteLine("\t+------------------------------------------------+");
+                Console.Write("\t\t\tUser Name: ");
                 string userName = Console.ReadLine();
-                Console.Write("Password: ");
+                Console.Write("\t\t\tPassword: ");
                 string password = GetPassword();
                 Console.WriteLine();
                 user = bl.Login(userName, password);
                 if (user != null)
                 {
-                    Console.WriteLine("Login successfully!");
+                    Console.WriteLine("\t\t\tLogin successfully!");
                 }
                 else
                 {
-                    Console.WriteLine("Login fail!");
-                    Console.WriteLine("Please re-enter!");
+                    Console.WriteLine("\t-------------------------------------------------");
+                    Console.WriteLine("\t\t\tLogin fail!");
+                    Console.WriteLine("\t\t\tPlease re-enter!");
                     Console.ReadLine();
                 }
             } while (user == null);
@@ -48,9 +53,13 @@ namespace PL_Console
                     do
                     {
                         Console.Clear();
-                        Console.WriteLine("+---------------------------------+");
-                        Console.WriteLine("|       Wellcome to Hotel         |");
-                        Console.WriteLine("+---------------------------------+");
+                        Console.WriteLine("\t+------------------------------------------------+");
+                        Console.WriteLine("\t|    WellCome To                                 |");
+                        Console.WriteLine("\t|         _   _       _          _               |");
+                        Console.WriteLine("\t|        | |_| | ___ | |__  ____| |              |");
+                        Console.WriteLine("\t|        |  _  || _ ||  _/ /___/| |__            |");
+                        Console.WriteLine("\t|        |_| |_||___||_|  /__|  |____/           |");
+                        Console.WriteLine("\t+------------------------------------------------+");
                         DisplayMenu(mainMenu);
                         choice = InputChoice();
 
@@ -61,6 +70,11 @@ namespace PL_Console
                                 break;
                             case 2:
                                 DisplaysubMenu2();
+                                break;
+                            case 0:
+                                break;
+                            default:
+                                Console.WriteLine("Wrong!! Please re-enter");
                                 break;
                         }
                     } while (choice != 0);
@@ -110,9 +124,44 @@ namespace PL_Console
             return cus;
         }
 
-        static string[] mainMenu = { "1. Check In", "2. Check Out", "0. Exit" };
-        static string[] subMenu1 = { "1. List of empty room", "2. View room info", "3. Enter Customer info", "4. View Customer info ", "5. Check In ", "0. Back to main menu " };
-        static string[] subMenu2 = { "1. Enter Room Number", "2. View Bill info", "0. Back to main menu " };
+        static private char ChoiceYOrN()
+        {
+        while (true)
+            {
+                char select = Convert.ToChar(Console.ReadLine());
+                if (select == 'Y' || select == 'y')
+                {
+                    select = 'y';
+                    return select;
+                }
+                else if (select == 'N' || select == 'n')
+                {
+                    select = 'n';
+                    return select;
+                }
+                else
+                {
+                    Console.Write("\t\tWrong!! Please re-enter");
+                }
+            }
+        }
+        static private void ContinueOrNot1()
+        {
+            Console.Write("\t\tDo you want to continue (Y/N): ");
+            char select = ChoiceYOrN();
+            if (select == 'y')
+            {
+                return;
+            }
+            else
+            {
+                DisplaysubMenu1();
+            }
+        }
+
+        static string[] mainMenu = { "\t\t1. Check In", "\t\t2. Check Out", "\t\t0. Exit" };
+        static string[] subMenu1 = { "\t\t1. List of empty room", "\t\t2. View room info", "\t\t3. Check Customer ID Card", "\t\t4. New Customer ","\t\t5. View Customer info ", "\t\t6. Check In ", "\t\t0. Back to main menu " };
+        static string[] subMenu2 = { "\t\t1. Enter Room Number", "\t\t0. Back to main menu " };
 
 
         static void DisplayMenu(string[] menu)
@@ -135,9 +184,13 @@ namespace PL_Console
             do
             {
                 Console.Clear();
-                Console.WriteLine("+---------------------------------+");
-                Console.WriteLine("|             Check In            |");
-                Console.WriteLine("+---------------------------------+");
+                Console.WriteLine("\t+------------------------------------------------+");
+                Console.WriteLine("\t|                                                |");
+                Console.WriteLine("\t|    ___  _   _  ___  ___  _   _    _  _____     |");
+                Console.WriteLine("\t|   |  _|| |_| || __||  _|| |_|_|  | ||  __ |    |");
+                Console.WriteLine("\t|   | |_ |  _  || __|| |_ |  _|_   | || | | |    |");
+                Console.WriteLine("\t|   |___||_| |_||___||___||_| |_|  |_||_| |_|    |");
+                Console.WriteLine("\t+------------------------------------------------+");
                 DisplayMenu(subMenu1);
                 try
                 {
@@ -146,6 +199,7 @@ namespace PL_Console
                     choice = 3;
                     choice = 4;
                     choice = 5;
+                    choice = 6;
                     choice = 0;
                 }
                 catch (System.Exception)
@@ -157,7 +211,7 @@ namespace PL_Console
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("List of empty Room");
+                        Console.Clear();
                         List<Room> listRoom = romBL.GetRooms();
                         var table = new ConsoleTable("Room ID", "Room Type", "Room Status");
 
@@ -172,29 +226,43 @@ namespace PL_Console
                         break;
                     case 2:
                         int romId;
-                        Console.Write("Enter an Room's ID: ");
+                        Console.Write("\t\tEnter an Room's ID: ");
                         romId = Convert.ToInt32(Console.ReadLine());
 
                         rom = romBL.GetRoomById(romId);
                         if (rom != null)
                         {
                             Console.Clear();
-                            Console.WriteLine("+-----------------------+");
-                            Console.WriteLine("|Room Id: " + rom.Room_Id + "\t\t|");
-                            Console.WriteLine("|Room Type Info: " + rom.RoomTypeInfo + "\t|");
-                            Console.WriteLine("|Room Status: " + rom.Room_Status + "\t\t|");
-                            Console.WriteLine("+-----------------------+");
+                            Console.WriteLine("\t+------------------------------------------------+");
+                            Console.WriteLine("\t|                                                |");
+                            Console.WriteLine("\t|    ___  _   _  ___  ___  _   _    _  _____     |");
+                            Console.WriteLine("\t|   |  _|| |_| || __||  _|| |_|_|  | ||  __ |    |");
+                            Console.WriteLine("\t|   | |_ |  _  || __|| |_ |  _|_   | || | | |    |");
+                            Console.WriteLine("\t|   |___||_| |_||___||___||_| |_|  |_||_| |_|    |");
+                            Console.WriteLine("\t+------------------------------------------------+");
+                            Console.WriteLine("\t\tRoom Detail");
+                            Console.WriteLine("\t\t+-------------------------------+");
+                            Console.WriteLine("\t\t     Room Id       : " + rom.Room_Id +     "");
+                            Console.WriteLine("\t\t     Room Type Info: " + rom.RoomTypeInfo+ "");
+                            Console.WriteLine("\t\t     Room Status   : " + rom.Room_Status + "");
+                            Console.WriteLine("\t\t+-------------------------------+");
                         }
                         else
                         {
-                            Console.WriteLine("Room Id does not exist!");
+                            Console.WriteLine("\t\tRoom Id does not exist!");
                         }
-                        Console.WriteLine("\n    Press Enter key to back menu...");
-                        Console.ReadLine();
-                        DisplaysubMenu1();
+                        ContinueOrNot1();
                         break;
                     case 3:
-                        Console.WriteLine("Enter Customer Data: ");
+                        Console.Clear();
+                        Console.WriteLine("\t+------------------------------------------------+");
+                        Console.WriteLine("\t|                                                |");
+                        Console.WriteLine("\t|    ___  _   _  ___  ___  _   _    _  _____     |");
+                        Console.WriteLine("\t|   |  _|| |_| || __||  _|| |_|_|  | ||  __ |    |");
+                        Console.WriteLine("\t|   | |_ |  _  || __|| |_ |  _|_   | || | | |    |");
+                        Console.WriteLine("\t|   |___||_| |_||___||___||_| |_|  |_||_| |_|    |");
+                        Console.WriteLine("\t+------------------------------------------------+");
+                        Console.WriteLine("\t\tCheck Customer ID Card");
                         List<Customer> customers = cusBL.GetListCustomers();
                         Customer cus1 = new Customer();
                         if (customers == null)
@@ -204,96 +272,105 @@ namespace PL_Console
                         else
                         {
                             string NewId_card;
-                            Console.Write("Id Card: ");
+                            Console.Write("\t\tId Card: ");
                             NewId_card = Convert.ToString(Console.ReadLine());
                             Customer FindCus = FindCustomer(NewId_card, customers);
                             // tim kiem thong tin khach hang trong database
                             if ((cus1 = FindCus) != null)
                             {
-                                Console.WriteLine("ID Card already exist!!");
+                                Console.WriteLine("\t\tID Card already exist!!");
                             }
                             else
                             {
-                                Console.Write("Cutomer Name: ");
-                                cus1.Customer_Name = Convert.ToString(Console.ReadLine());
-                                Console.Write("Address: ");
-                                cus1.Address = Convert.ToString(Console.ReadLine());
-                                Console.Write("Phone Number: ");
-                                cus1.Phone_Number = Convert.ToString(Console.ReadLine());
-                                Console.Write("Email: ");
-                                cus1.Email = Convert.ToString(Console.ReadLine());
-                                Console.Write("Gender: ");
-                                cus1.Gender = Convert.ToString(Console.ReadLine());
-
-                                if (cusBL.AddCustomer(cus1))
-                                {
-                                    Console.WriteLine("Add Customer Complete!");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Fail to add Customer");
-                                }
-
+                               Console.WriteLine("\t\tNew Customer!!");
                             }
                         }
-                        Console.WriteLine("\n    Press Enter key to back menu...");
-                        Console.ReadLine();
-                        DisplaysubMenu1();
+                        ContinueOrNot1();
                         break;
                     case 4:
+                        Customer cus2 = new Customer();
+                        Console.Clear();
+                        Console.WriteLine("\t+------------------------------------------------+");
+                        Console.WriteLine("\t|                                                |");
+                        Console.WriteLine("\t|    ___  _   _  ___  ___  _   _    _  _____     |");
+                        Console.WriteLine("\t|   |  _|| |_| || __||  _|| |_|_|  | ||  __ |    |");
+                        Console.WriteLine("\t|   | |_ |  _  || __|| |_ |  _|_   | || | | |    |");
+                        Console.WriteLine("\t|   |___||_| |_||___||___||_| |_|  |_||_| |_|    |");
+                        Console.WriteLine("\t+------------------------------------------------+");
+                        Console.Write("\t\tCutomer Name  : ");
+                        cus2.Customer_Name = Convert.ToString(Console.ReadLine());
+                        Console.Write("\t\tAddress       : ");
+                        cus2.Address = Convert.ToString(Console.ReadLine());
+                        Console.Write("\t\tId Card       : ");
+                        cus2.Id_Card = Convert.ToString(Console.ReadLine());
+                        Console.Write("\t\tPhone Number  : ");
+                        cus2.Phone_Number = Convert.ToString(Console.ReadLine());
+                        Console.Write("\t\tEmail         : ");
+                        cus2.Email = Convert.ToString(Console.ReadLine());
+                        Console.Write("\t\tGender        : ");
+                        cus2.Gender = Convert.ToString(Console.ReadLine());
+
+                        if (cusBL.AddCustomer(cus2))
+                        {
+                            Console.WriteLine("\t\tAdd Customer Complete!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\t\tFail to add Customer");
+                        }
+                        ContinueOrNot1();
+                        break;
+                    case 5:
                         int cusId;
-                        Console.Write("Enter an Customer's ID: ");
+                        Console.Write("\t\tEnter an Customer's ID: ");
                         cusId = Convert.ToInt32(Console.ReadLine());
 
                         Customer cus = cusBL.GetCustomerById(cusId);
                         if (cus != null)
                         {
-                            Console.WriteLine("+-------------------------------+");
-                            Console.WriteLine("|Customer ID: " + cus.CustomerId+ "\t\t\t|");
-                            Console.WriteLine("|Customer Name: " + cus.Customer_Name+ "\t|");
-                            Console.WriteLine("|Address: " + cus.Address+ "\t\t|");
-                            Console.WriteLine("|Id Card: " + cus.Id_Card+ "\t\t|");
-                            Console.WriteLine("|Phone Number: " + cus.Phone_Number+ "\t|");
-                            Console.WriteLine("|Email: " + cus.Email+ "\t|");
-                            Console.WriteLine("|Gender: " + cus.Gender+ "\t\t\t|");
-                            Console.WriteLine("+-------------------------------+");
+                            Console.Clear();
+                            Console.WriteLine("\t+------------------------------------------------+");
+                            Console.WriteLine("\t|                                                |");
+                            Console.WriteLine("\t|    ___  _   _  ___  ___  _   _    _  _____     |");
+                            Console.WriteLine("\t|   |  _|| |_| || __||  _|| |_|_|  | ||  __ |    |");
+                            Console.WriteLine("\t|   | |_ |  _  || __|| |_ |  _|_   | || | | |    |");
+                            Console.WriteLine("\t|   |___||_| |_||___||___||_| |_|  |_||_| |_|    |");
+                            Console.WriteLine("\t+------------------------------------------------+");
+                            Console.WriteLine("\t\tCustomer Detail");
+                            Console.WriteLine("\t\t+------------------------------------+");
+                            Console.WriteLine("\t\t  Customer ID   : " + cus.CustomerId+"");
+                            Console.WriteLine("\t\t  Customer Name : " + cus.Customer_Name+ "");
+                            Console.WriteLine("\t\t  Address       : " + cus.Address+ "");
+                            Console.WriteLine("\t\t  Id Card       : " + cus.Id_Card+ "");
+                            Console.WriteLine("\t\t  Phone Number  : " + cus.Phone_Number+ "");
+                            Console.WriteLine("\t\t  Email         : " + cus.Email+ "");
+                            Console.WriteLine("\t\t  Gender        : " + cus.Gender+ "");
+                            Console.WriteLine("\t\t+------------------------------------+");
                         }
-                        Console.WriteLine("\n    Press Enter key to back menu...");
-                        Console.ReadLine();
-                        DisplaysubMenu1();
+                        ContinueOrNot1();
                         break;
-                    case 5:
+                    case 6:
                         Console.Clear();
-                        Console.WriteLine("1. List Of Check In");
-                        Console.WriteLine("2. Enter Check In info");
-                        choice = InputChoice();
-                        switch (choice)
-                        {
-                            case 1:
-                                Console.WriteLine("List Of Check In");
-                                List<CheckIn> listCheckIn = chkBL.GetListCheckIn();
-                                var table1 = new ConsoleTable("Check In ID", "Staff ID", "Customer ID", "Room Type Name", "Check In Time", "Check Out Time", "Status");
+                        Console.WriteLine("List Of Check In");
+                        List<CheckIn> listCheckIn = chkBL.GetListCheckIn();
+                        var table1 = new ConsoleTable("Check In ID", "Staff ID", "Customer ID", "Room Type Name", "Check In Time", "Check Out Time", "Status");
 
-                                foreach (CheckIn item in listCheckIn)
-                                {
-                                    table1.AddRow(item.CheckInId, item.StaffId, item.Customer_Id, item.RTname, item.Check_In, item.Check_Out, item.Status);
-                                }
-                                table1.Write();
-                                Console.Write("\n     Press any key to continue...");
-                                Console.ReadKey();
-                                DisplaysubMenu1();
-                                break;
-                            case 2:
-                                Console.WriteLine("Enter Check In info");
-                                Console.Write("\n     Press any key to continue...");
-                                Console.ReadKey();
-                                DisplaysubMenu1();
-                                break;
-                        }
+                            foreach (CheckIn item in listCheckIn)
+                            {
+                                table1.AddRow(item.CheckInId, item.StaffId, item.Customer_Id, item.RTname, item.Check_In, item.Check_Out, item.Status);
+                            }
+                            table1.Write();
+                            Console.Write("\t\tPress any key to continue...");
+                            Console.ReadKey();
+                            DisplaysubMenu1();
                         break;
                     case 0:
+                    
                         DisplayMenu(mainMenu);
                         break;
+                    default:
+                    Console.WriteLine("Wrong!! Please re-enter");
+                    break;
                 }
             } while (choice != 0);
         }
@@ -312,9 +389,13 @@ namespace PL_Console
             do
             {
                 Console.Clear();
-                Console.WriteLine("+---------------------------------+");
-                Console.WriteLine("|           Check Out             |");
-                Console.WriteLine("+---------------------------------+");
+                Console.WriteLine("\t+------------------------------------------------------+");
+                Console.WriteLine("\t|                                                      |");
+                Console.WriteLine("\t|    ___  _   _  ___  ___  _   _    ___  _   _  _____  |");
+                Console.WriteLine("\t|   |  _|| |_| || __||  _|| |_|_|  |   || | | ||_   _| |");
+                Console.WriteLine("\t|   | |_ |  _  || __|| |_ |  _|_   | | || |_| |  | |   |");
+                Console.WriteLine("\t|   |___||_| |_||___||___||_| |_|  |___||_____|  |_|   |");
+                Console.WriteLine("\t+------------------------------------------------------+");
                 DisplayMenu(subMenu2);
                 try
                 {
@@ -332,30 +413,34 @@ namespace PL_Console
                 {
                     case 1:
                         int roomId;
-                        Console.Write("Enter an Room's ID: ");
+                        Console.Write("\t\tEnter an Room's ID: ");
                         roomId = Convert.ToInt32(Console.ReadLine());
 
                         chkout = chkoutBL.CheckOutbyRoomId(roomId);
                         if (chkout != null)
                         {
                             Console.Clear();
-                            Console.WriteLine("+-------------------------------+");
-                            Console.WriteLine("|Room Id: " + chkout.roomID + "\t\t\t|");
-                            Console.WriteLine("|Time Stay(Day): " + chkout.TimeStay + "\t\t|");
-                            Console.WriteLine("|Price: " + chkout.Price + "\t\t|");
-                            Console.WriteLine("+-------------------------------+");
+                            Console.WriteLine("\t+------------------------------------------------------+");
+                            Console.WriteLine("\t|                                                      |");
+                            Console.WriteLine("\t|    ___  _   _  ___  ___  _   _    ___  _   _  _____  |");
+                            Console.WriteLine("\t|   |  _|| |_| || __||  _|| |_|_|  |   || | | ||_   _| |");
+                            Console.WriteLine("\t|   | |_ |  _  || __|| |_ |  _|_   | | || |_| |  | |   |");
+                            Console.WriteLine("\t|   |___||_| |_||___||___||_| |_|  |___||_____|  |_|   |");
+                            Console.WriteLine("\t+------------------------------------------------------+");
+                            Console.WriteLine("\t\t+-------------------------------+");
+                            Console.WriteLine("\t\t|Room Id: " + chkout.roomID + "\t\t\t|");
+                            Console.WriteLine("\t\t|Time Stay(Day): " + chkout.TimeStay + "\t\t|");
+                            Console.WriteLine("\t\t|Price: " + chkout.Price + " VND\t\t|");
+                            Console.WriteLine("\t\t+-------------------------------+");
                         }
                         else
                         {
                             Console.WriteLine("Room Id does not exist!");
                         }
-                        Console.WriteLine("\n    Press Enter key to back menu...");
+                        Console.WriteLine("\t\tPress Enter key to back menu...");
                         Console.ReadLine();
                         DisplaysubMenu2();
 
-                    break;
-
-                    case 2:
                     break;
                     case 0:
                     DisplayMenu(mainMenu);
@@ -367,7 +452,7 @@ namespace PL_Console
         }
         static int InputChoice()
             {
-                Console.Write("Choice : ");
+                Console.Write("\t\tChoice : ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 return choice;
             }
