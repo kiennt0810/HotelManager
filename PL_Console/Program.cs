@@ -21,6 +21,10 @@ namespace PL_Console
             do
             {
                 Console.Clear();
+                Console.WriteLine("\t==================================================");
+                Console.WriteLine("\t\t\t  Hotel Management");
+                Console.WriteLine("\t\tPF11 Nguyễn Trung Kiên - Lê Minh Hiếu");
+                Console.WriteLine("\t\t     Teacher : Nguyễn Xuân Sinh");
                 Console.WriteLine("\t+------------------------------------------------+");
                 Console.WriteLine("\t|                                                |");
                 Console.WriteLine("\t|            |     ___    ___   .   __           |");
@@ -126,7 +130,7 @@ namespace PL_Console
 
         static private char ChoiceYOrN()
         {
-        while (true)
+        do
             {
                 char select = Convert.ToChar(Console.ReadLine());
                 if (select == 'Y' || select == 'y')
@@ -143,7 +147,7 @@ namespace PL_Console
                 {
                     Console.Write("\t\tWrong!! Please re-enter");
                 }
-            }
+            }while(true);
         }
         static private void ContinueOrNot1()
         {
@@ -156,6 +160,19 @@ namespace PL_Console
             else
             {
                 DisplaysubMenu1();
+            }
+        }
+        static void ContinueOrNot2()
+        {
+            Console.Write("\t\tDo you want to continue (Y/N): ");
+            char select = ChoiceYOrN();
+            if (select == 'y')
+            {
+                return;
+            }
+            else
+            {
+                DisplaysubMenu2();
             }
         }
 
@@ -347,6 +364,10 @@ namespace PL_Console
                             Console.WriteLine("\t\t  Gender        : " + cus.Gender+ "");
                             Console.WriteLine("\t\t+------------------------------------+");
                         }
+                        else
+                        {
+                            Console.WriteLine("\t\tCustomer ID does not exist!");
+                        }
                         ContinueOrNot1();
                         break;
                     case 6:
@@ -427,9 +448,11 @@ namespace PL_Console
                             Console.WriteLine("\t|   | |_ |  _  || __|| |_ |  _|_   | | || |_| |  | |   |");
                             Console.WriteLine("\t|   |___||_| |_||___||___||_| |_|  |___||_____|  |_|   |");
                             Console.WriteLine("\t+------------------------------------------------------+");
+                            Console.WriteLine("\t\tBill Detail");
                             Console.WriteLine("\t\t+-------------------------------+");
                             Console.WriteLine("\t\t|Room Id: " + chkout.roomID + "\t\t\t|");
                             Console.WriteLine("\t\t|Time Stay(Day): " + chkout.TimeStay + "\t\t|");
+                            Console.WriteLine("\t\t+-------------------------------+");
                             Console.WriteLine("\t\t|Price: " + chkout.Price + " VND\t\t|");
                             Console.WriteLine("\t\t+-------------------------------+");
                         }
